@@ -3,7 +3,7 @@ import search
 import isodate
 #"AIzaSyBZhiI5trjy4ZFysrYD54_E9sDMR3aKfpo"
 
-listOfTracks = pandas.read_csv("cd-tracks-1000.csv", header=None)
+listOfTracks = pandas.read_csv("cd-tracks-1000.csv", header=None, encoding = 'utf8')
 creator = listOfTracks[1]
 title = listOfTracks[2]
 length = listOfTracks[3]
