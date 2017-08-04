@@ -24,13 +24,12 @@ def searchVideos(query="fate grand order"):
 
     return listOfIds
 
-def getLengthOfVideos(videos):
+def getLengthOfVideo(video=searchVideos()[0]):
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
     response = youtube.videos().list(
         part = "id,contentDetails",
-        id = videos[0]
+        id = video
     ).execute()
+    return response["items"][0]["contentDetails"]["duration"]
 
-    return response
-
-print(searchVideos())
+print(getLengthOfVideo())
