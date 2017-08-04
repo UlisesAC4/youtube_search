@@ -14,16 +14,15 @@ for index in range(1000):
     query =  "{} {}".format(creator[index], title[index])
     print(query)
     possibleResults = search.searchVideos(query)
-    lengths = [0, 0, 0]
+    lengths = []
     if len(possibleResults) > 0:
-        lengths[0] = search.getLengthOfVideo(possibleResults[0])
-        lengths[1] = search.getLengthOfVideo(possibleResults[1])
-        lengths[2] = search.getLengthOfVideo(possibleResults[2])
+        for x in possibleResults:
+            lengths.append(search.getLengthOfVideo(x))
         lengths = [isodate.parse_duration(x).total_seconds() for x in lengths]
         r = range(int(length[index]) - 10, int(length[index] + 11))
         print(r)
         isInRange = []
-        for x in range(3):
+        for x in range(len(possibleResults)):
             if lengths[x] in r:
                 isInRange.append({x: lengths[x], "inRange": True})
             else:
