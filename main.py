@@ -9,6 +9,7 @@ title = listOfTracks[2]
 length = listOfTracks[3]
 idOfVideo = listOfTracks[4]
 listOfTracks[4] = listOfTracks[4].astype(str)
+listOfTracks[5] = listOfTracks[5].astype(str)
 
 for index in range(1000):
     query =  "{} {}".format(creator[index], title[index])
@@ -33,7 +34,7 @@ for index in range(1000):
             key = list(isInRange[0])
             print(key[0])
             print(possibleResults[key[0]])
-            listOfTracks.set_value(index, 4, possibleResults[key[0]])
+            listOfTracks.set_value(index, 4, "https://www.youtube.com/watch?v=" + possibleResults[key[0]])
         elif len(isInRange) > 1:
             for x in isInRange:
                 x.pop("inRange", None)
@@ -44,6 +45,11 @@ for index in range(1000):
             lesserTuple = min(newList, key=lambda x: abs(x[1]-length[index]))
             print(lesserTuple[0])
             print(possibleResults[lesserTuple[0]])
-            listOfTracks.set_value(index, 4, possibleResults[lesserTuple[0]])
-
+            listOfTracks.set_value(index, 4, "https://www.youtube.com/watch?v=" + possibleResults[lesserTuple[0]])
+        listOfTracks.set_value(index, 5, "")
+        print(listOfTracks)
+    else:
+        listOfTracks.set_value(index, 4, "")
+        listOfTracks.set_value(index, 5, "")
+        print(listOfTracks)
 listOfTracks.to_csv("final.csv")
