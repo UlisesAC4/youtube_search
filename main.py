@@ -35,6 +35,7 @@ for index in range(1000):
             print(key[0])
             print(possibleResults[key[0]])
             listOfTracks.set_value(index, 4, "https://www.youtube.com/watch?v=" + possibleResults[key[0]])
+            listOfTracks.set_value(index, 5, "")
         elif len(isInRange) > 1:
             for x in isInRange:
                 x.pop("inRange", None)
@@ -46,10 +47,8 @@ for index in range(1000):
             print(lesserTuple[0])
             print(possibleResults[lesserTuple[0]])
             listOfTracks.set_value(index, 4, "https://www.youtube.com/watch?v=" + possibleResults[lesserTuple[0]])
-        listOfTracks.set_value(index, 5, "")
-        print(listOfTracks)
+            listOfTracks.set_value(index, 5, "")
     else:
         listOfTracks.set_value(index, 4, "")
         listOfTracks.set_value(index, 5, "")
-        print(listOfTracks)
 listOfTracks.to_csv("final.csv")
