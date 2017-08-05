@@ -51,7 +51,6 @@ for index in range(1000):
         else:
             listOfTracks.set_value(index, 4, "")
             listOfTracks.set_value(index, 5, "")
-        print(listOfTracks)
     else:
         listOfTracks.set_value(index, 4, "")
         listOfTracks.set_value(index, 5, "")
